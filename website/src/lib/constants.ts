@@ -5,8 +5,8 @@ export const SITE_CONFIG = {
   packageName: "com.custos.studio.app",
   minAndroidVersion: "Android 8.0+ (API 26)",
   playStoreEarlyAccessHref: "#early-access",
-  githubRepoUrl: "https://github.com/joshdeutc/custos",
-  githubReleasesUrl: "https://github.com/joshdeutc/custos/releases/latest",
+  githubRepoUrl: "https://github.com/joshdeutc/custos-studio",
+  githubReleasesUrl: "https://github.com/joshdeutc/custos-studio",
   lastLegalUpdate: "November 18, 2026",
   legal: {
     publisherApp: "Custos",

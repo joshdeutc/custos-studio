@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <img src="logo_custos.svg" alt="Custos" width="96" height="96">
 </p>
 
@@ -6,22 +6,22 @@
 
 <p align="center">
   A self-discipline Android app that limits your screen time on the apps <em>you</em>
-  choose — daily quotas, curfews, per-unlock sessions and a "nuclear" mode.<br>
+  choose â€” daily quotas, curfews, per-unlock sessions and a "nuclear" mode.<br>
   <strong>No root, no Device Owner, no special privileges.</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/joshdeutc/custos/releases/latest"><img src="https://img.shields.io/github/v/release/joshdeutc/custos?label=latest&color=6D28D9" alt="Latest release"></a>
-  <a href="https://github.com/joshdeutc/custos/releases/latest"><img src="https://img.shields.io/github/downloads/joshdeutc/custos/total?label=APK%20downloads&color=6D28D9" alt="APK downloads"></a>
+  <a href="https://github.com/joshdeutc/custos-studio/releases/latest"><img src="https://img.shields.io/github/v/release/joshdeutc/custos-studio?label=latest&color=6D28D9" alt="Latest release"></a>
+  <a href="https://github.com/joshdeutc/custos-studio/releases/latest"><img src="https://img.shields.io/github/downloads/joshdeutc/custos-studio/total?label=APK%20downloads&color=6D28D9" alt="APK downloads"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
 </p>
 
 <p align="center">
-  <a href="#download">Download</a> ·
-  <a href="#features">Features</a> ·
-  <a href="#how-it-works">How it works</a> ·
-  <a href="#build-from-source">Build from source</a> ·
-  <a href="#first-time-setup">Setup</a> ·
+  <a href="#download">Download</a> Â·
+  <a href="#features">Features</a> Â·
+  <a href="#how-it-works">How it works</a> Â·
+  <a href="#build-from-source">Build from source</a> Â·
+  <a href="#first-time-setup">Setup</a> Â·
   <a href="docs/ARCHITECTURE.md">Docs</a>
 </p>
 
@@ -29,10 +29,10 @@
 
 ## Download
 
-- 📦 **App (APK)** — get the latest signed APK from the
-  [**Releases**](https://github.com/joshdeutc/custos/releases/latest) page, copy it to your Android
+- ðŸ“¦ **App (APK)** â€” get the latest signed APK from the
+  [**Releases**](https://github.com/joshdeutc/custos-studio/releases/latest) page, copy it to your Android
   phone (8.0+) and open it to install. The first time, allow installs from your browser / file manager.
-- 🧱 **Source code** — clone this repo and compile it yourself: see [Build from source](#build-from-source).
+- ðŸ§± **Source code** â€” clone this repo and compile it yourself: see [Build from source](#build-from-source).
 
 > Every release is signed with the same key, so a newer APK installs straight over an older one
 > without uninstalling (your settings are kept).
@@ -41,25 +41,25 @@
 
 Custos watches the foreground app through an **AccessibilityService**. As soon as an app
 exceeds a rule you defined, you're sent back to the home screen. The goal isn't an unbreakable
-lock — it's to add just enough friction to break the "open Instagram on autopilot" reflex.
+lock â€” it's to add just enough friction to break the "open Instagram on autopilot" reflex.
 
 > **Read this first.** Custos is a *self-discipline* tool, not tamper-proof parental control.
 > Without system privileges, a determined user can disable the accessibility service in Settings
 > or uninstall the app. It re-protects itself (intercepts the sensitive Settings pages) and
-> restarts on boot, but it adds friction — it is not an absolute lock.
+> restarts on boot, but it adds friction â€” it is not an absolute lock.
 
 ## Features
 
-- ⏱️ **Daily quota** per app (e.g. 30 min/day of Instagram).
-- 🌙 **Curfews** — time windows where a group of apps is blocked (e.g. social media blocked
-  10 pm–7 am), with optional notification muting.
-- 📅 **Allowed days / hours** per app.
-- 🔁 **Session limits** (Discord-style) — duration per opening + an enforced cooldown between
+- â±ï¸ **Daily quota** per app (e.g. 30 min/day of Instagram).
+- ðŸŒ™ **Curfews** â€” time windows where a group of apps is blocked (e.g. social media blocked
+  10 pmâ€“7 am), with optional notification muting.
+- ðŸ“… **Allowed days / hours** per app.
+- ðŸ” **Session limits** (Discord-style) â€” duration per opening + an enforced cooldown between
   openings + a maximum number of openings per day.
-- ☢️ **Nuclear Mode** — reinforced temporary block of a set of apps, with named presets.
-- 🕒 **Anti-cheat delay** — loosening a limit only takes effect after a delay; tightening it is
+- â˜¢ï¸ **Nuclear Mode** â€” reinforced temporary block of a set of apps, with named presets.
+- ðŸ•’ **Anti-cheat delay** â€” loosening a limit only takes effect after a delay; tightening it is
   immediate.
-- 🔄 **Persistent** — survives reboots and service kills (restarts on boot + watchdog).
+- ðŸ”„ **Persistent** â€” survives reboots and service kills (restarts on boot + watchdog).
 
 ## How it works
 
@@ -80,7 +80,7 @@ Full details in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 ## Build from source
 
 ```bash
-git clone https://github.com/joshdeutc/custos.git
+git clone https://github.com/joshdeutc/custos-studio.git
 cd custos
 ./gradlew assembleDebug          # Windows: .\gradlew.bat assembleDebug
 ```
@@ -99,12 +99,12 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 Open the app, then grant the requested permissions from its home screen:
 
-1. **Accessibility** — *required*. This is the core of the app (foreground detection + blocking).
-   Settings → Accessibility → Custos → Enable.
-2. **Usage access** — *required* to measure screen time.
-3. **Notifications** (Android 13+) — for the service notifications.
-4. **Notification access** *(optional)* — to mute notifications from blocked apps.
-5. **Do Not Disturb** *(optional)* — used by Nuclear Mode.
+1. **Accessibility** â€” *required*. This is the core of the app (foreground detection + blocking).
+   Settings â†’ Accessibility â†’ Custos â†’ Enable.
+2. **Usage access** â€” *required* to measure screen time.
+3. **Notifications** (Android 13+) â€” for the service notifications.
+4. **Notification access** *(optional)* â€” to mute notifications from blocked apps.
+5. **Do Not Disturb** *(optional)* â€” used by Nuclear Mode.
 
 The app walks you through each one. Once accessibility and usage access are granted, the service
 starts automatically.
@@ -130,9 +130,10 @@ If you're curious, the rules are stored in a `limits.json` file whose format is 
 
 ## Contributing & feedback
 
-Issues and pull requests are welcome — bug reports, feature ideas, device compatibility notes,
+Issues and pull requests are welcome â€” bug reports, feature ideas, device compatibility notes,
 anything. Feel free to fork it and make it your own.
 
 ## License
 
-Released under the [MIT License](LICENSE) — free to use, modify and redistribute.
+Released under the [MIT License](LICENSE) â€” free to use, modify and redistribute.
+

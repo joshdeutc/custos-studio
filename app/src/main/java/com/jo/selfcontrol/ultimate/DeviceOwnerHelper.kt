@@ -26,7 +26,7 @@ object DeviceOwnerHelper {
         ComponentName(ctx, AdminReceiver::class.java)
 
     fun isDeviceOwner(ctx: Context): Boolean = try {
-        dpm(ctx).isDeviceOwnerApp(ctx.packageName) || (GuardianClient.isAvailable && GuardianClient.isGuardianDeviceOwner())
+        dpm(ctx).isDeviceOwnerApp(ctx.packageName)
     } catch (e: Exception) {
         Log.e(TAG, "isDeviceOwner failed: ${e.message}")
         false
@@ -197,10 +197,6 @@ object DeviceOwnerHelper {
      */
     fun suspendApp(ctx: Context, pkg: String): Boolean {
         if (!BuildConfig.OS_SUSPENSION_ENABLED) return false
-        if (GuardianClient.isAvailable && GuardianClient.isGuardianDeviceOwner()) {
-            GuardianClient.setPackageSuspended(pkg, true)
-            return true
-        }
         if (!dpm(ctx).isDeviceOwnerApp(ctx.packageName)) return false
         return runCatching {
             val failed = dpm(ctx).setPackagesSuspended(admin(ctx), arrayOf(pkg), true)
@@ -213,10 +209,6 @@ object DeviceOwnerHelper {
     }
 
     fun unsuspendApp(ctx: Context, pkg: String): Boolean {
-        if (GuardianClient.isAvailable && GuardianClient.isGuardianDeviceOwner()) {
-            GuardianClient.setPackageSuspended(pkg, false)
-            return true
-        }
         if (!dpm(ctx).isDeviceOwnerApp(ctx.packageName)) return false
         return runCatching {
             dpm(ctx).setPackagesSuspended(admin(ctx), arrayOf(pkg), false)
@@ -272,10 +264,6 @@ object DeviceOwnerHelper {
 
     /** Hide an app entirely (used for Nuclear Mode OS-level enforcement). */
     fun hideApp(ctx: Context, pkg: String, hidden: Boolean): Boolean {
-        if (GuardianClient.isAvailable && GuardianClient.isGuardianDeviceOwner()) {
-            GuardianClient.setPackageHidden(pkg, hidden)
-            return true
-        }
         if (!dpm(ctx).isDeviceOwnerApp(ctx.packageName)) return false
         return runCatching {
             dpm(ctx).setApplicationHidden(admin(ctx), pkg, hidden)
@@ -357,17 +345,11 @@ object DeviceOwnerHelper {
     private const val KEY_PRIVATE_DNS = "configured_private_dns_host"
 
     fun getPrivateDnsHost(ctx: Context): String? {
-        if (GuardianClient.isAvailable && GuardianClient.isGuardianDeviceOwner()) {
-            return GuardianClient.getPrivateDnsHost()
-        }
         val prefs = ctx.getSharedPreferences(PREFS_DO, Context.MODE_PRIVATE)
         return prefs.getString(KEY_PRIVATE_DNS, DEFAULT_PRIVATE_DNS)
     }
 
     fun setPrivateDns(ctx: Context, hostname: String?): Boolean {
-        if (GuardianClient.isAvailable && GuardianClient.isGuardianDeviceOwner()) {
-            return GuardianClient.setPrivateDnsHost(hostname)
-        }
         if (!isDeviceOwner(ctx) || android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.Q) return false
         val cleanHost = hostname?.trim()?.takeIf { it.isNotEmpty() }
         ctx.getSharedPreferences(PREFS_DO, Context.MODE_PRIVATE)

@@ -191,7 +191,7 @@ export default function TermsPage() {
             rel="noopener noreferrer"
             className="text-indigo-600 hover:underline dark:text-indigo-400"
           >
-            github.com/joshdeutc/custos
+            github.com/joshdeutc/custos-studio
           </a>
           ), whose license terms continue to apply to those source files.
         </p>
