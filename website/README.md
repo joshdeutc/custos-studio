@@ -1,4 +1,4 @@
-﻿# Custos â€” Site Web Vitrine Officiel
+# Custos â€” Site Web Vitrine Officiel
 
 Site vitrine SaaS & Pages lÃ©gales officielles de l'application Android **Custos** (`https://custos.joshuanancey.com`), conÃ§u avec **Next.js (App Router)**, **Tailwind CSS**, **Framer Motion** et **Lucide Icons**.
 

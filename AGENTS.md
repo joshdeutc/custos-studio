@@ -1,4 +1,4 @@
-﻿# Custos Studio — Directives pour les Agents IA (Édition Google Play Store)
+# Custos Studio — Directives pour les Agents IA (Édition Google Play Store)
 
 Ce dépôt (**custos-studio**) contient exclusivement la version commerciale grand public de **Custos** publiée sur le Google Play Store ainsi que son site vitrine officiel.
 

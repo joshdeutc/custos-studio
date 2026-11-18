@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
   <img src="logo_custos.svg" alt="Custos" width="96" height="96">
 </p>
 
